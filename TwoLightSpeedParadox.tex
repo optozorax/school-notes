@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage[outline]{contour}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{indentfirst}
+\usepackage{floatflt}
+\usepackage{ifthen}
+
+
+% Настройка страницы
+\textheight=24cm % высота текста
+\textwidth=16cm % ширина текста
+\oddsidemargin=0pt % отступ от левого края
+\topmargin=-1.5cm % отступ от верхнего края
+\parindent=24pt % абзацный отступ
+\parskip=5pt % интервал между абзацами
+\tolerance=2000 % терпимость к "жидким" строкам
+\flushbottom % выравнивание высоты страниц
+
+% Объявления от tikz
+\usepackage{tikz}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+\usetikzlibrary{through}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+
+% Объявляем новую команду для переноса строки внутри ячейки таблицы
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newenvironment{teorem}{\noindent\begin{tabular}{||p{38em}}\parindent=1cm}{\end{tabular}}
+\newcounter{formul} \newenvironment{formul}{\noindent$$}{\eqno{(\arabic{formul})}$$\addtocounter{formul}{1}} \setcounter{formul}{1}
+
+\begin{document} \fontsize{12pt}{16pt}\selectfont
+
+\title{\Huge\bf Парадокс скорости $2c$}
+\author{Шепрут Илья}
+\date{\today}
+\maketitle
+
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1} % начать нумерацию с номера 1
+
+\section{Введение} 
+При изучении физики в школе у учеников часто возникает один парадокс, связанный с возможностью получить скорость больше скорости света. Этому парадоксу и посвящена данная работа.
+
+\newpage
+
+\section{Парадокс}
+При изучении достижений Эйнштейна, ученик понимает и не спорит, что время может замедляться, что при приближении к скорости света длина тела изменяется, что масса увеличивается(хотя и не до конца может понять как можно замерить массу в данном случае и зачем это нужно). Но когда говорят, что скорость света является предельной величиной движения любого тела, у любого человека, обладающего критическим мышлением практически сразу возникает контр-аргумент, чтобы лучше понять происходящее. Этот контр-аргумент заключается в том, что мы можем выпустить два луча света в разные стороны, тогда один может двигаться относительно другого с двойной скоростью света. Но учителя, книги говорят, что ты не прав, что не может быть такой скорости, хоть и сами понимают, что все что сказал ученик не противоречит логике. Доводя объяснение до абсурда выясняется что на самом деле хотел сказать человек:
+
+Представим, что мы стоим Земле, и с Луны в разные стороны запусти два камня со скоростью $0.7c$ относительно луны, у нас имеется камера для замедленной съемки, которая запечатляет движения тел, у нас есть секундомер. Итак, запускаются два камня, и они улетели сразу же, наша камера засняла их движение. Зная размер луны на изображении, и используя простейшую проективную геометрию, мы узнаем
+
+Ладно, оставить до лучших времен. Я понял пока что скорость, которую мы будем замерять, и скорость виртуальная будут различны, и скорость  
+
+\subsection{}
+
+\newpage
+
+\begin{thebibliography}{99}
+\bibitem{Label1} Берман - задачник по курсу математического анализа.
+\bibitem{Label2} Какая-нибудь книга по мат. анализу.
+\bibitem{Label2} Марон по мат.анализу, оттуда взята формула для приведения суммы к интегралу.
+\bibitem{Label2} Курс физики. Трофимова Т. И. М.: Высш. шк., 2001, изд. 7-ое. - откуда взято определение материальной точки.
+\
+\end{thebibliography}
+
+\end{document}
