@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage[cp1251]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage[fleqn]{amsmath}
 \usepackage[T1]{fontenc}
@@ -10,18 +10,31 @@
 \usepackage{indentfirst}
 \usepackage{floatflt}
 
+\usepackage{fontspec}
+\setmainfont[
+	Ligatures=TeX,
+	Extension=.otf,
+	BoldFont=cmunbx,
+	ItalicFont=cmunti,
+	BoldItalicFont=cmunbi,
+]{cmunrm}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
 
-% Настройка страницы
-\textheight=24cm % высота текста
-\textwidth=16cm % ширина текста
-\oddsidemargin=0pt % отступ от левого края
-\topmargin=-1.5cm % отступ от верхнего края
-\parindent=24pt % абзацный отступ
-\parskip=5pt % интервал между абзацами
-\tolerance=2000 % терпимость к "жидким" строкам
-\flushbottom % выравнивание высоты страниц
+% РќР°СЃС‚СЂРѕР№РєР° СЃС‚СЂР°РЅРёС†С‹
+\textheight=24cm % РІС‹СЃРѕС‚Р° С‚РµРєСЃС‚Р°
+\textwidth=16cm % С€РёСЂРёРЅР° С‚РµРєСЃС‚Р°
+\oddsidemargin=0pt % РѕС‚СЃС‚СѓРї РѕС‚ Р»РµРІРѕРіРѕ РєСЂР°СЏ
+\topmargin=-1.5cm % РѕС‚СЃС‚СѓРї РѕС‚ РІРµСЂС…РЅРµРіРѕ РєСЂР°СЏ
+\parindent=24pt % Р°Р±Р·Р°С†РЅС‹Р№ РѕС‚СЃС‚СѓРї
+\parskip=5pt % РёРЅС‚РµСЂРІР°Р» РјРµР¶РґСѓ Р°Р±Р·Р°С†Р°РјРё
+\tolerance=2000 % С‚РµСЂРїРёРјРѕСЃС‚СЊ Рє "Р¶РёРґРєРёРј" СЃС‚СЂРѕРєР°Рј
+\flushbottom % РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РІС‹СЃРѕС‚С‹ СЃС‚СЂР°РЅРёС†
 
-% Объявления от tikz
+% РћР±СЉСЏРІР»РµРЅРёСЏ РѕС‚ tikz
 \usepackage{tikz}
 \usepackage{graphics}
 \usepackage{xcolor}
@@ -30,13 +43,13 @@
 \usetikzlibrary{intersections}
 \usetikzlibrary{patterns}
 
-% Объявляем новую команду для переноса строки внутри ячейки таблицы
+% РћР±СЉСЏРІР»СЏРµРј РЅРѕРІСѓСЋ РєРѕРјР°РЅРґСѓ РґР»СЏ РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРєРё РІРЅСѓС‚СЂРё СЏС‡РµР№РєРё С‚Р°Р±Р»РёС†С‹
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
-% Автор и прочее
-\title{Заметки по математике.}
-\author{Авторы: Шепрут Илья.}
-\date{Алматы, 2016}
+% РђРІС‚РѕСЂ Рё РїСЂРѕС‡РµРµ
+\title{Р—Р°РјРµС‚РєРё РїРѕ РјР°С‚РµРјР°С‚РёРєРµ.}
+\author{РђРІС‚РѕСЂС‹: РЁРµРїСЂСѓС‚ РР»СЊСЏ.}
+\date{РђР»РјР°С‚С‹, 2016}
 
 \begin{document} \fontsize{12pt}{16pt}\selectfont
 %--------------------------------------------------------------------------------%
@@ -50,88 +63,88 @@
 
 \newpage
 
-\setcounter{page}{1} % начать нумерацию с номера 1
+\setcounter{page}{1} % РЅР°С‡Р°С‚СЊ РЅСѓРјРµСЂР°С†РёСЋ СЃ РЅРѕРјРµСЂР° 1
 
 %--------------------------------------------------------------------------------%
 %--------------------------------------------------------------------------------%
 
-\section{Интергалы}
+\section{РРЅС‚РµРіСЂР°Р»С‹}
 
-\subsection{Использование дифференциала}
+\subsection{РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РґРёС„С„РµСЂРµРЅС†РёР°Р»Р°}
 
-Как выносить функцию под знак дифференциала, и наоборот, как вносить функцию под дифференциал:
+РљР°Рє РІС‹РЅРѕСЃРёС‚СЊ С„СѓРЅРєС†РёСЋ РїРѕРґ Р·РЅР°Рє РґРёС„С„РµСЂРµРЅС†РёР°Р»Р°, Рё РЅР°РѕР±РѕСЂРѕС‚, РєР°Рє РІРЅРѕСЃРёС‚СЊ С„СѓРЅРєС†РёСЋ РїРѕРґ РґРёС„С„РµСЂРµРЅС†РёР°Р»:
 $$ d\, f(x) = f'(x)\, dx $$
 
 $$ f(x)\, dx = d\, F(x) $$
 
 $$ d\, f(x) = d(f(x) + C), C \in R $$
 
-{\bfseries Пример использования: }
+{\bfseries РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ: }
 
 $$ \int \tg x\, dx = \int \frac{\sin x}{\cos x}\, dx = \int \frac{-d\, \cos x}{\cos x} = -\ln |\cos x| + C, C \in R $$
 
-\subsection{Интегрирование по частям}
+\subsection{РРЅС‚РµРіСЂРёСЂРѕРІР°РЅРёРµ РїРѕ С‡Р°СЃС‚СЏРј}
 
-Основная идея: когда под интегралом дробь с линейным уравнением наверху, и с квадртаным снизу, то снизу можно: Либо выделить полный квадрат, а затем заменить переменную, как в примере 1.   Либо разложить линейное уравнение вверху на сумму или разность с разными коэффицентами двух скобок, получаемых из квадратного уравнения снизу. Чтобы потом осталась сумма двух дробей, взять от которых интеграл не составляет труда. Как в примере 2.
+РћСЃРЅРѕРІРЅР°СЏ РёРґРµСЏ: РєРѕРіРґР° РїРѕРґ РёРЅС‚РµРіСЂР°Р»РѕРј РґСЂРѕР±СЊ СЃ Р»РёРЅРµР№РЅС‹Рј СѓСЂР°РІРЅРµРЅРёРµРј РЅР°РІРµСЂС…Сѓ, Рё СЃ РєРІР°РґСЂС‚Р°РЅС‹Рј СЃРЅРёР·Сѓ, С‚Рѕ СЃРЅРёР·Сѓ РјРѕР¶РЅРѕ: Р›РёР±Рѕ РІС‹РґРµР»РёС‚СЊ РїРѕР»РЅС‹Р№ РєРІР°РґСЂР°С‚, Р° Р·Р°С‚РµРј Р·Р°РјРµРЅРёС‚СЊ РїРµСЂРµРјРµРЅРЅСѓСЋ, РєР°Рє РІ РїСЂРёРјРµСЂРµ 1.   Р›РёР±Рѕ СЂР°Р·Р»РѕР¶РёС‚СЊ Р»РёРЅРµР№РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РІРІРµСЂС…Сѓ РЅР° СЃСѓРјРјСѓ РёР»Рё СЂР°Р·РЅРѕСЃС‚СЊ СЃ СЂР°Р·РЅС‹РјРё РєРѕСЌС„С„РёС†РµРЅС‚Р°РјРё РґРІСѓС… СЃРєРѕР±РѕРє, РїРѕР»СѓС‡Р°РµРјС‹С… РёР· РєРІР°РґСЂР°С‚РЅРѕРіРѕ СѓСЂР°РІРЅРµРЅРёСЏ СЃРЅРёР·Сѓ. Р§С‚РѕР±С‹ РїРѕС‚РѕРј РѕСЃС‚Р°Р»Р°СЃСЊ СЃСѓРјРјР° РґРІСѓС… РґСЂРѕР±РµР№, РІР·СЏС‚СЊ РѕС‚ РєРѕС‚РѕСЂС‹С… РёРЅС‚РµРіСЂР°Р» РЅРµ СЃРѕСЃС‚Р°РІР»СЏРµС‚ С‚СЂСѓРґР°. РљР°Рє РІ РїСЂРёРјРµСЂРµ 2.
 
-{\bfseries Пример 1:}
+{\bfseries РџСЂРёРјРµСЂ 1:}
 
 $$ \int \frac{d\, x}{x^2 + 6\cdot x + 5} = \int \frac{d\, x}{(x^2 + 6\cdot x + 9) + 1} = \int \frac{d\, (x + 3)}{(x + 3)^2 + 1} =  $$
 $$ = \left| x+3 = t \right| = \int \frac{d\, t}{t^2 + 1} = \arctg (x + 3) + C, c \in R $$
 
-{\bfseries Пример 2:}
+{\bfseries РџСЂРёРјРµСЂ 2:}
 
 $$ \int \frac{d\, x}{x^2 + 6\cdot x + 5} = \int \frac{d\, x}{(x + 1)\cdot(x + 5)} = \frac{1}{4}\cdot \int \frac{4\cdot d\, x}{(x + 1)\cdot(x + 5)} = \frac{1}{4}\cdot \int \frac{(x + 5) - (x + 1)}{x + 1)\cdot(x + 5)} \cdot d\, x = $$
 $$ = \frac{1}{4}\cdot \int \left( \frac{1}{x + 1} - \frac{1}{x + 5} \right)\cdot d\, x = \frac{1}{4}\cdot \ln |x + 1| - \frac{1}{4}\cdot \ln |x + 5| + C, C \in R $$
 
-\subsection{Интегрирование по частям 2}
+\subsection{РРЅС‚РµРіСЂРёСЂРѕРІР°РЅРёРµ РїРѕ С‡Р°СЃС‚СЏРј 2}
 
-Эта формула позволяет менять местами подинтегральное и поддифферециальное выражение, что иногда упрощает решение интеграла:
+Р­С‚Р° С„РѕСЂРјСѓР»Р° РїРѕР·РІРѕР»СЏРµС‚ РјРµРЅСЏС‚СЊ РјРµСЃС‚Р°РјРё РїРѕРґРёРЅС‚РµРіСЂР°Р»СЊРЅРѕРµ Рё РїРѕРґРґРёС„С„РµСЂРµС†РёР°Р»СЊРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ, С‡С‚Рѕ РёРЅРѕРіРґР° СѓРїСЂРѕС‰Р°РµС‚ СЂРµС€РµРЅРёРµ РёРЅС‚РµРіСЂР°Р»Р°:
 $$ \label{eq:fourierrow} \int f(x) d\, g(x) = f(x)\cdot g(x) - \int g(x) d\, f(x) $$
 
-{\bfseries Пример 1:}
+{\bfseries РџСЂРёРјРµСЂ 1:}
 $$ \int x\cdot \sin x\, d\, x = \int x\, d\, \cos x = -x\cdot \cos x + \int \cos x\, d\, x = -x\cdot \cos x + \sin x + C, C \in R $$
 
 \vspace{1cm}
 
-{\bfseries Пример 2:}
-$$ \int \overbrace{\strut \arctg x}^{\text{Поместим это}}\, \overbrace{\strut dx}^{\text{сюда}} = x\cdot \arctg x - \int x\, d \overbrace{\strut \arctg x}^{\text{Вытащим обратно}} = x\cdot \arctg x - \int \frac{\overbrace{\strut x}^{\text{Поместим это}}}{x^2 + 1}\, \overbrace{\strut dx}^{\text{сюда}} = $$
+{\bfseries РџСЂРёРјРµСЂ 2:}
+$$ \int \overbrace{\strut \arctg x}^{\text{РџРѕРјРµСЃС‚РёРј СЌС‚Рѕ}}\, \overbrace{\strut dx}^{\text{СЃСЋРґР°}} = x\cdot \arctg x - \int x\, d \overbrace{\strut \arctg x}^{\text{Р’С‹С‚Р°С‰РёРј РѕР±СЂР°С‚РЅРѕ}} = x\cdot \arctg x - \int \frac{\overbrace{\strut x}^{\text{РџРѕРјРµСЃС‚РёРј СЌС‚Рѕ}}}{x^2 + 1}\, \overbrace{\strut dx}^{\text{СЃСЋРґР°}} = $$
 $$ = x\cdot \arctg x - \frac{1}{2}\cdot \int \frac{d(x^2 + 1)}{x^2 + 1} = x\cdot \arctg x - \frac{1}{2}\cdot \ln |x^2 + 1| $$
 
 \vspace{1cm}
 
-{\bfseries Пример 3:}
+{\bfseries РџСЂРёРјРµСЂ 3:}
 
 $$ \int \arcsin x\, dx = x\cdot \arcsin x - \int x\,d \arcsin x = x\cdot \arcsin x - \int \frac{x}{\sqrt{\mathstrut 1 - x^2}}\,dx = $$ $$ = x\cdot \arcsin x + \frac{1}{2}\cdot \int \frac{d(1-x^2)}{\sqrt{\mathstrut 1-x^2}} = x\cdot \arcsin x + \frac{1}{2}\cdot \int \frac{dt}{\sqrt{\mathstrut t}} = x\cdot \arcsin x + \sqrt{\mathstrut 1-x^2} $$
 
 \vspace{1cm}
 
-{\bfseries Решение сложного интеграла по действиям:}
-$$ 1)\,\,\int \overbrace{\strut \arctg \sqrt{\mathstrut x}}^{\text{Поместим это}}\, \overbrace{\strut dx}^{\text{сюда}} = x\cdot \arctg \sqrt{\mathstrut x} - \int x\, d\overbrace{\strut \arctg \sqrt{\mathstrut x}}^{\text{Вытащим обратно}} = x\cdot \arctg \sqrt{\mathstrut x} - \int \frac{x}{(x + 1)\cdot 2\cdot \sqrt{\mathstrut x}}\, dx = $$ $$ = x\cdot \arctg \sqrt{\mathstrut x} - \frac{1}{2}\cdot \underbrace{\strut \int \frac{\sqrt{\mathstrut x}}{x + 1}\, dx}_{\text{Надо решить это}}; $$
+{\bfseries Р РµС€РµРЅРёРµ СЃР»РѕР¶РЅРѕРіРѕ РёРЅС‚РµРіСЂР°Р»Р° РїРѕ РґРµР№СЃС‚РІРёСЏРј:}
+$$ 1)\,\,\int \overbrace{\strut \arctg \sqrt{\mathstrut x}}^{\text{РџРѕРјРµСЃС‚РёРј СЌС‚Рѕ}}\, \overbrace{\strut dx}^{\text{СЃСЋРґР°}} = x\cdot \arctg \sqrt{\mathstrut x} - \int x\, d\overbrace{\strut \arctg \sqrt{\mathstrut x}}^{\text{Р’С‹С‚Р°С‰РёРј РѕР±СЂР°С‚РЅРѕ}} = x\cdot \arctg \sqrt{\mathstrut x} - \int \frac{x}{(x + 1)\cdot 2\cdot \sqrt{\mathstrut x}}\, dx = $$ $$ = x\cdot \arctg \sqrt{\mathstrut x} - \frac{1}{2}\cdot \underbrace{\strut \int \frac{\sqrt{\mathstrut x}}{x + 1}\, dx}_{\text{РќР°РґРѕ СЂРµС€РёС‚СЊ СЌС‚Рѕ}}; $$
 
-$$ 2)\,\,\int \frac{\sqrt{\mathstrut x}}{x + 1}\, dx = |t = \sqrt{\mathstrut x}| = \int \frac{t}{t^2 + 1}\,  \overbrace{\strut dt^2}^{\text{Вытащим это}} = 2\cdot \int \frac{t^2+1-1}{t^2+1} = 2\cdot \int \frac{t^2+1}{t^2+1}\,dt-2\cdot\int\frac{dt}{t^2+1} = $$ $$ = 2\cdot t-2\arctg t = 2\cdot\sqrt{\mathstrut x}-2\cdot\arctg\sqrt{\mathstrut x}+C,C\in R; $$
+$$ 2)\,\,\int \frac{\sqrt{\mathstrut x}}{x + 1}\, dx = |t = \sqrt{\mathstrut x}| = \int \frac{t}{t^2 + 1}\,  \overbrace{\strut dt^2}^{\text{Р’С‹С‚Р°С‰РёРј СЌС‚Рѕ}} = 2\cdot \int \frac{t^2+1-1}{t^2+1} = 2\cdot \int \frac{t^2+1}{t^2+1}\,dt-2\cdot\int\frac{dt}{t^2+1} = $$ $$ = 2\cdot t-2\arctg t = 2\cdot\sqrt{\mathstrut x}-2\cdot\arctg\sqrt{\mathstrut x}+C,C\in R; $$
 
 $$ 3)\,\,x\cdot \arctg \sqrt{\mathstrut x} - \sqrt{\mathstrut x}+\arctg\sqrt{\mathstrut x}+C = (x+1)\cdot\arctg \sqrt{\mathstrut x}-\sqrt{\mathstrut x}+C,C\in R $$
 
-\subsection{Площадь криволинейной трапеции}
+\subsection{РџР»РѕС‰Р°РґСЊ РєСЂРёРІРѕР»РёРЅРµР№РЅРѕР№ С‚СЂР°РїРµС†РёРё}
 
 \begin{center}
 \noindent
 \begin{tikzpicture}
-	% Создание собственной функции
+	% РЎРѕР·РґР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРѕР№ С„СѓРЅРєС†РёРё
 	[ declare function={ myfun(\x) = sin(\x*360/pi + 30)/4 + 1.7; }, ]
 
-	% Присвоение значения размера графика
+	% РџСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РіСЂР°С„РёРєР°
 	\def\strtx{-0.2}
 	\def\strty{-0.2}
 
 	\def\endx{3.5}
 	\def\endy{2.6}
 
-	% Функция графика
+	% Р¤СѓРЅРєС†РёСЏ РіСЂР°С„РёРєР°
 	\def\normaltwo{\x,{myfun(\x)}}
 
-	% Описание положения и рассчет координат для горизонтали
+	% РћРїРёСЃР°РЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ Рё СЂР°СЃСЃС‡РµС‚ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\def\b{(\endx - \strtx)*0.8 + \strtx}
 	\def\fb{myfun(\b)}
 	\def\a{(\endx - \strtx)*0.25 + \strtx}
@@ -144,22 +157,22 @@ $$ 3)\,\,x\cdot \arctg \sqrt{\mathstrut x} - \sqrt{\mathstrut x}+\arctg\sqrt{\ma
 
 	%--------------------------------------------------------------------------------%
 
-	% Оси, сетка
+	% РћСЃРё, СЃРµС‚РєР°
 	\draw[->] (\strtx,0) -- (\endx,0) node[right] {x};
 	\draw[->] (0,\strty) -- (0,\endy) node[above] {y};
 	\draw[step=.4cm,gray,very thin] (\strtx+0.1,\strty+0.1) grid (\endx-0.1,\endy-0.1);
 
-	% Штриховка площади
+	% РЁС‚СЂРёС…РѕРІРєР° РїР»РѕС‰Р°РґРё
 	\fill [pattern=north east lines, pattern color=gray!60] ({\a},0) -- plot[domain=\a:\b] (\normaltwo) -- ({\b},0) -- cycle;
 	\fill [pattern=north west lines, pattern color=gray!60] ({\xs},0) -- plot[domain=\xs:\xe] (\normaltwo) -- ({\xe},0) -- cycle;
 
-	% Сам график
+	% РЎР°Рј РіСЂР°С„РёРє
 	\draw[color=blue,domain=\strtx:\endx] plot (\normaltwo) node[right] {$y = f(x)$};
 
-	% Рисование площади обычной
+	% Р РёСЃРѕРІР°РЅРёРµ РїР»РѕС‰Р°РґРё РѕР±С‹С‡РЅРѕР№
 	\draw[color=red, very thick] (0,0) -- plot[domain=0:\a] (\normaltwo) -- ({\a},0) -- cycle;
 
-	% Обозначение и линия горизонтали
+	% РћР±РѕР·РЅР°С‡РµРЅРёРµ Рё Р»РёРЅРёСЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\draw[dashed] ({\b},{\fb}) -- ({\b},0) node[below] {$b$};
 	\draw[dashed] ({\a},{\fa}) -- ({\a},0) node[below] {$a$};
 	\draw[dashed] ({\xe},{\fxe}) -- ({\xe},0) node[below] {$\scriptstyle x_0 + \Delta x$};
@@ -170,60 +183,60 @@ $$ 3)\,\,x\cdot \arctg \sqrt{\mathstrut x} - \sqrt{\mathstrut x}+\arctg\sqrt{\ma
 \end{tikzpicture}
 \end{center}
 
-{\itshape Определение}: криволинейной трапецией называет множество точек плоскости, ограниченные осью ОХ, прямыми $ x = a $, $ x = b $ и графиком функции $ y = f(x) $, где $ f(x)>0 $. На рисунке эта площадь показана серой штриховкой. Вывод площади криволинейной трапеции:
+{\itshape РћРїСЂРµРґРµР»РµРЅРёРµ}: РєСЂРёРІРѕР»РёРЅРµР№РЅРѕР№ С‚СЂР°РїРµС†РёРµР№ РЅР°Р·С‹РІР°РµС‚ РјРЅРѕР¶РµСЃС‚РІРѕ С‚РѕС‡РµРє РїР»РѕСЃРєРѕСЃС‚Рё, РѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рµ РѕСЃСЊСЋ РћРҐ, РїСЂСЏРјС‹РјРё $ x = a $, $ x = b $ Рё РіСЂР°С„РёРєРѕРј С„СѓРЅРєС†РёРё $ y = f(x) $, РіРґРµ $ f(x)>0 $. РќР° СЂРёСЃСѓРЅРєРµ СЌС‚Р° РїР»РѕС‰Р°РґСЊ РїРѕРєР°Р·Р°РЅР° СЃРµСЂРѕР№ С€С‚СЂРёС…РѕРІРєРѕР№. Р’С‹РІРѕРґ РїР»РѕС‰Р°РґРё РєСЂРёРІРѕР»РёРЅРµР№РЅРѕР№ С‚СЂР°РїРµС†РёРё:
 
-Обозначим $ S(x) $ как площадь криволинейной трапеции от горизонтали $ 0 $ до горизонтали $ x $, сверху ограниченой графиком функции $ y = f(x) $, а снизу ограниченной вертикалью $ 0 $. На рисунке показаны границы считаемой площади для $ S(a) $.
+РћР±РѕР·РЅР°С‡РёРј $ S(x) $ РєР°Рє РїР»РѕС‰Р°РґСЊ РєСЂРёРІРѕР»РёРЅРµР№РЅРѕР№ С‚СЂР°РїРµС†РёРё РѕС‚ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё $ 0 $ РґРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё $ x $, СЃРІРµСЂС…Сѓ РѕРіСЂР°РЅРёС‡РµРЅРѕР№ РіСЂР°С„РёРєРѕРј С„СѓРЅРєС†РёРё $ y = f(x) $, Р° СЃРЅРёР·Сѓ РѕРіСЂР°РЅРёС‡РµРЅРЅРѕР№ РІРµСЂС‚РёРєР°Р»СЊСЋ $ 0 $. РќР° СЂРёСЃСѓРЅРєРµ РїРѕРєР°Р·Р°РЅС‹ РіСЂР°РЅРёС†С‹ СЃС‡РёС‚Р°РµРјРѕР№ РїР»РѕС‰Р°РґРё РґР»СЏ $ S(a) $.
 
-$$ \text{Тогда обозначим\ } \Delta S = S(x_0+\Delta x)-S(x_0) $$
+$$ \text{РўРѕРіРґР° РѕР±РѕР·РЅР°С‡РёРј\ } \Delta S = S(x_0+\Delta x)-S(x_0) $$
 
-$$ \text{А так же справедливо\ } \Delta S = \Delta x\cdot f(x_0)\text{, при\,} \Delta x \rightarrow 0 $$
+$$ \text{Рђ С‚Р°Рє Р¶Рµ СЃРїСЂР°РІРµРґР»РёРІРѕ\ } \Delta S = \Delta x\cdot f(x_0)\text{, РїСЂРё\,} \Delta x \rightarrow 0 $$
 
 \begin{center}
-	Тогда приравняем их и поставим пределы:
+	РўРѕРіРґР° РїСЂРёСЂР°РІРЅСЏРµРј РёС… Рё РїРѕСЃС‚Р°РІРёРј РїСЂРµРґРµР»С‹:
 \end{center}
 
 $$ \lim_{\Delta x \to 0} (S(x_0+\Delta x)-S(x_0)) = \lim_{\Delta x \to 0} (\Delta x\cdot f(x)) $$
 
 $$ \lim_{\Delta x \to 0} \frac{S(x_0+\Delta x)-S(x_0)}{\Delta x} = \lim_{\Delta x \to 0} f(x) $$
 
-$$ S'(x_0) = f(x_0) \text{\ --- по определению производной, и т. к. $ x_0 $ произвольная.} $$
+$$ S'(x_0) = f(x_0) \text{\ --- РїРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ РїСЂРѕРёР·РІРѕРґРЅРѕР№, Рё С‚. Рє. $ x_0 $ РїСЂРѕРёР·РІРѕР»СЊРЅР°СЏ.} $$
 
-$$ \text{Следовательно\ } S(x) = \int f(x)\, dx = F(x) + C,\ C\in R $$
+$$ \text{РЎР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ\ } S(x) = \int f(x)\, dx = F(x) + C,\ C\in R $$
 
 \begin{center}
-	Тогда формула площади нужной части будет:
+	РўРѕРіРґР° С„РѕСЂРјСѓР»Р° РїР»РѕС‰Р°РґРё РЅСѓР¶РЅРѕР№ С‡Р°СЃС‚Рё Р±СѓРґРµС‚:
 \end{center}
 
 $$ S = S(b) - S(a) = F(b) + C - F(a) - C = F(b) - F(a) $$
 
 \begin{center}
-	И специальное обозначение этой площади:
+	Р СЃРїРµС†РёР°Р»СЊРЅРѕРµ РѕР±РѕР·РЅР°С‡РµРЅРёРµ СЌС‚РѕР№ РїР»РѕС‰Р°РґРё:
 \end{center}
 
 $$ \boxed{S = \int\limits_a^b f(x)\, dx = F(b) - F(a)} $$
 
-\subsection{Геометрическое приложение определенного интеграла}
+\subsection{Р“РµРѕРјРµС‚СЂРёС‡РµСЃРєРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РёРЅС‚РµРіСЂР°Р»Р°}
 
-\subsubsection{Площадь круга}
+\subsubsection{РџР»РѕС‰Р°РґСЊ РєСЂСѓРіР°}
 
 \begin{center}
 \noindent
 \begin{tikzpicture}
-	% Создание собственной функции
+	% РЎРѕР·РґР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРѕР№ С„СѓРЅРєС†РёРё
 	\tikzset{declare function={	my1(\x) = sqrt(4-(\x)^2);}}
 
-	% Присвоение значения размера графика
+	% РџСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РіСЂР°С„РёРєР°
 	\def\strtx{-1.2}
 	\def\strty{-0.2}
 
 	\def\endx{3.0}
 	\def\endy{3.0}
 
-	% Функция графика
+	% Р¤СѓРЅРєС†РёСЏ РіСЂР°С„РёРєР°
 	\def\normaltwo{\x,{my1(\x)}}
 	\def\normalthree{\x,{my2(\x)}}
 
-	% Описание положения и рассчет координат для горизонтали
+	% РћРїРёСЃР°РЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ Рё СЂР°СЃСЃС‡РµС‚ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\def\b{(\endx - \strtx)*0.8 + \strtx}
 	\def\fb{my1(\b)}
 	\def\a{(\endx - \strtx)*0.25 + \strtx}
@@ -236,20 +249,20 @@ $$ \boxed{S = \int\limits_a^b f(x)\, dx = F(b) - F(a)} $$
 
 	%--------------------------------------------------------------------------------%
 
-	% Оси, сетка
+	% РћСЃРё, СЃРµС‚РєР°
 	\draw[->] (\strtx,0) -- (\endx,0) node[right] {x};
 	\draw[->] (0,\strty) -- (0,\endy) node[above] {y};
 	\draw[step=.4cm,gray,very thin] (\strtx+0.1,\strty+0.1) grid (\endx-0.1,\endy-0.1);
 
-	% Штриховка площади
+	% РЁС‚СЂРёС…РѕРІРєР° РїР»РѕС‰Р°РґРё
 	\fill [pattern=north east lines, pattern color=gray!60] (0,0) -- plot[domain=0:2, samples=100,smooth] (\normaltwo) -- (2,0) -- cycle;
 
-	% Сам график
+	% РЎР°Рј РіСЂР°С„РёРє
 	\draw[color=blue,domain={\strtx}:2] plot[samples=100,smooth] (\normaltwo);
 
 	\draw[color=blue] (1.5,2.4) node {$y = \sqrt{\mathstrut R^2 - x^2}$};
 
-	% Обозначение и линия горизонтали
+	% РћР±РѕР·РЅР°С‡РµРЅРёРµ Рё Р»РёРЅРёСЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\draw (1, 0.5) node {$\scriptstyle S_{\frac{1}{4}}$};
 
 	\draw (2,-2pt) -- (2,2pt) node[anchor=north] {$R$};
@@ -257,13 +270,13 @@ $$ \boxed{S = \int\limits_a^b f(x)\, dx = F(b) - F(a)} $$
 \end{tikzpicture}
 \end{center}
 
-Формула полукруга: $ y = \sqrt{\mathstrut R^2 - x^2}$. Тогда рассчитаем его площадь:
+Р¤РѕСЂРјСѓР»Р° РїРѕР»СѓРєСЂСѓРіР°: $ y = \sqrt{\mathstrut R^2 - x^2}$. РўРѕРіРґР° СЂР°СЃСЃС‡РёС‚Р°РµРј РµРіРѕ РїР»РѕС‰Р°РґСЊ:
 
 $$ S = \int\limits_0^R \sqrt{\mathstrut R^2 - x^2}\, dx = \int\limits_0^R R\cdot \sqrt{\mathstrut 1 - \left( \frac{x}{R}\right)^2}\, dx = \left| \frac{x}{R} = \cos t;\ x = R\cdot \cos t;\ a = \frac{\pi}{2};\ b = 0 \right| = $$  $$ \int\limits_{\frac{\pi}{2}}^0 R\cdot \sqrt{\mathstrut 1 - \cos t} \, d R\cdot \cos t = R^2\cdot \int\limits_{\frac{\pi}{2}}^0 -\sin^2 t\, dt = R^2\cdot \int\limits_{\frac{\pi}{2}}^0 \frac{\cos 2\cdot t - 1}{2}\, dt = R^2\cdot \left.\left(\frac{1}{4}\cdot \sin 2\cdot t - \frac{1}{2}\cdot t\right)\right|_{\frac{\pi}{2}}^0 = $$ $$ = R^2\cdot (0 - 0 - \left(0 - \frac{\pi}{4} \right)) = \frac{\pi\cdot R^2}{4} $$
 
-$$ S_{\text{круга}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
+$$ S_{\text{РєСЂСѓРіР°}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
 
-\subsubsection{Объем тела вращения}
+\subsubsection{РћР±СЉРµРј С‚РµР»Р° РІСЂР°С‰РµРЅРёСЏ}
 
 \newcommand{\Ellipse}[4][]
 {
@@ -274,22 +287,22 @@ $$ S_{\text{круга}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
 \begin{center}
 \noindent
 \begin{tikzpicture}
-	% Создание собственной функции
+	% РЎРѕР·РґР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРѕР№ С„СѓРЅРєС†РёРё
 	\tikzset{declare function={	my1(\x) = ((\x-4)^2)/16 + 1.3;
 					my2(\x) = -my1(\x);}}
 
-	% Присвоение значения размера графика
+	% РџСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РіСЂР°С„РёРєР°
 	\def\strtx{-0.2}
 	\def\strty{-2.6}
 
 	\def\endx{5.5}
 	\def\endy{2.6}
 
-	% Функция графика
+	% Р¤СѓРЅРєС†РёСЏ РіСЂР°С„РёРєР°
 	\def\normaltwo{\x,{my1(\x)}}
 	\def\normalthree{\x,{my2(\x)}}
 
-	% Описание положения и рассчет координат для горизонтали
+	% РћРїРёСЃР°РЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ Рё СЂР°СЃСЃС‡РµС‚ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\def\b{(\endx - \strtx)*0.8 + \strtx}
 	\def\fb{my1(\b)}
 	\def\a{(\endx - \strtx)*0.25 + \strtx}
@@ -302,16 +315,16 @@ $$ S_{\text{круга}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
 
 	%--------------------------------------------------------------------------------%
 
-	% Оси, сетка
+	% РћСЃРё, СЃРµС‚РєР°
 	\draw[->] (\strtx,0) -- (\endx,0) node[right] {x};
 	\draw[->] (0,\strty) -- (0,\endy) node[above] {y};
 	\draw[step=.4cm,gray,very thin] (\strtx+0.1,\strty+0.1) grid (\endx-0.1,\endy-0.1);
 
-	% Штриховка площади
+	% РЁС‚СЂРёС…РѕРІРєР° РїР»РѕС‰Р°РґРё
 	\fill [pattern=north east lines, pattern color=gray!60] ({\a},0) -- plot[domain=\a:\b] (\normaltwo) -- ({\b},0) -- cycle;
 	\fill [fill=gray, fill opacity=0.5] ({\xs},0) -- plot[domain=\xs:\xe] (\normaltwo) -- ({\xe},0) -- cycle;
 
-	% Сам график
+	% РЎР°Рј РіСЂР°С„РёРє
 	\draw[color=blue,domain=\strtx:\endx] plot (\normaltwo) node[right] {$y = f(x)$};
 	\draw[color=blue,domain=\strtx:\endx] plot (\normalthree) node[right] {};
 
@@ -321,7 +334,7 @@ $$ S_{\text{круга}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
 	\Ellipse{my1}{\xs}{0.5};
 	\Ellipse{my1}{\xe}{0.5};
 
-	% Обозначение и линия горизонтали
+	% РћР±РѕР·РЅР°С‡РµРЅРёРµ Рё Р»РёРЅРёСЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\draw ({\b},{\fb}) -- ({\b},0) node[below] {$b$};
 	\draw ({\a},{\fa}) -- ({\a},0) node[below] {$a$};
 	\draw ({\xe},{\fxe}) -- ({\xe},0) node[right, pos=0.88] {\contour{white}{$\scriptstyle x_0 + \Delta x$}};
@@ -331,45 +344,45 @@ $$ S_{\text{круга}} = 4\cdot \frac{\pi\cdot R^2}{4} = \pi\cdot R^2 $$
 \end{tikzpicture}
 \end{center}
 
-Вывод формулы:
+Р’С‹РІРѕРґ С„РѕСЂРјСѓР»С‹:
 
 $$ \Delta V = V(x_0 + \Delta x) - V(x_0) $$
 
-$$ \Delta X = \pi\cdot f^2(x_0)\cdot \Delta x \text{,\ при\ } \Delta x \rightarrow 0 $$
+$$ \Delta X = \pi\cdot f^2(x_0)\cdot \Delta x \text{,\ РїСЂРё\ } \Delta x \rightarrow 0 $$
 
-Приравняем при $ \Delta x \rightarrow 0 $, поделив на $ \Delta x $:
+РџСЂРёСЂР°РІРЅСЏРµРј РїСЂРё $ \Delta x \rightarrow 0 $, РїРѕРґРµР»РёРІ РЅР° $ \Delta x $:
 
 $$ \lim_{\Delta x \to 0} \cfrac{V(x_0 + \Delta x) - V(x_0)}{\Delta x} = \lim_{\Delta x \to 0} (\pi\cdot f^2(x_0)\cdot) $$
 
-$$ V'(x_0) = \pi\cdot f^2(x_0) \text{ --- по определению производной. Следовательно:} $$
+$$ V'(x_0) = \pi\cdot f^2(x_0) \text{ --- РїРѕ РѕРїСЂРµРґРµР»РµРЅРёСЋ РїСЂРѕРёР·РІРѕРґРЅРѕР№. РЎР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ:} $$
 
 $$ \boxed{V = \int\limits_a^b \pi\cdot f^2(x)\, dx} $$
 
-\subsubsection{Объем цилиндра}
+\subsubsection{РћР±СЉРµРј С†РёР»РёРЅРґСЂР°}
 
 $$ V = \pi \cdot \int\limits_0^H R^2\, dx = \pi\cdot R^2\cdot H $$
 
-\subsubsection{Объем конуса}
+\subsubsection{РћР±СЉРµРј РєРѕРЅСѓСЃР°}
 
-Нахождение формулы прямой секущей конуса:
+РќР°С…РѕР¶РґРµРЅРёРµ С„РѕСЂРјСѓР»С‹ РїСЂСЏРјРѕР№ СЃРµРєСѓС‰РµР№ РєРѕРЅСѓСЃР°:
 
 $$ y = k\cdot x; k = \tg \alpha = \frac{R}{H} $$
 
-Вывод объема:
+Р’С‹РІРѕРґ РѕР±СЉРµРјР°:
 
 $$ V = \pi\cdot \int\limits_0^H \frac{R^2}{H^2}\cdot x^2\, dx = \frac{\pi\cdot R^2}{H^2}\cdot \left. \frac{x^3}{3}\right|_0^H = \frac{\pi}{3}\cdot R^2\cdot H $$
 
-\subsubsection{Объем усеченного конуса}
+\subsubsection{РћР±СЉРµРј СѓСЃРµС‡РµРЅРЅРѕРіРѕ РєРѕРЅСѓСЃР°}
 
-Формула прямой секущей конуса:
+Р¤РѕСЂРјСѓР»Р° РїСЂСЏРјРѕР№ СЃРµРєСѓС‰РµР№ РєРѕРЅСѓСЃР°:
 
 $$ y = \frac{R_2-R_1}{H}\cdot x + R_1 $$
 
-Вывод формулы объема:
+Р’С‹РІРѕРґ С„РѕСЂРјСѓР»С‹ РѕР±СЉРµРјР°:
 
 $$ V = \pi \int\limits_0^H \left( \frac{(R_2-R_1)^2}{H^2}\cdot x^2 + 2\cdot \frac{R_2-R_1}{H}\cdot x\cdot R_1 + R_1^2 \right)\, dx = $$ $$ = \pi \left. \left( \frac{(R_2-R_1)^2}{H^2}\cdot \frac{x^3}{3} + 2\cdot \frac{R_2-R_1}{H}\cdot \frac{x^2}{2}\cdot R_1 + R_1^2\cdot x \right)\right|_0^H = $$ $$ = \frac{\pi\cdot R}{3}(R_2^2 - 2\cdot R_1\cdot R_2 + R_1^2 + 3\cdot R_2\cdot R_1 - 3\cdot R_1^2 + 3\cdot R_1^2) = \boxed{\frac{\pi\cdot H}{3}(R_1^2 + R_1\cdot R_2 + R_2^2)} $$
 
-\subsubsection{Объем тела через S сечения}
+\subsubsection{РћР±СЉРµРј С‚РµР»Р° С‡РµСЂРµР· S СЃРµС‡РµРЅРёСЏ}
 
 \newcommand{\EllipseH}[4][]
 {
@@ -380,22 +393,22 @@ $$ V = \pi \int\limits_0^H \left( \frac{(R_2-R_1)^2}{H^2}\cdot x^2 + 2\cdot \fra
 \begin{center}
 \noindent
 \begin{tikzpicture}
-	% Создание собственной функции
+	% РЎРѕР·РґР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРѕР№ С„СѓРЅРєС†РёРё
 	\tikzset{declare function={	my1(\x) = -((\x-2)^2) + 2.3;
 					my2(\x) = -my1(\x);}}
 
-	% Присвоение значения размера графика
+	% РџСЂРёСЃРІРѕРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РіСЂР°С„РёРєР°
 	\def\strtx{-0.2}
 	\def\strty{-2.6}
 
 	\def\endx{5.5}
 	\def\endy{2.6}
 
-	% Функция графика
+	% Р¤СѓРЅРєС†РёСЏ РіСЂР°С„РёРєР°
 	\def\normaltwo{\x,{my1(\x)}}
 	\def\normalthree{\x,{my2(\x)}}
 
-	% Описание положения и рассчет координат для горизонтали
+	% РћРїРёСЃР°РЅРёРµ РїРѕР»РѕР¶РµРЅРёСЏ Рё СЂР°СЃСЃС‡РµС‚ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	\def\b{(\endx - \strtx)*0.8 + \strtx}
 	\def\fb{my1(\b)}
 	\def\a{(\endx - \strtx)*0.25 + \strtx}
@@ -408,18 +421,18 @@ $$ V = \pi \int\limits_0^H \left( \frac{(R_2-R_1)^2}{H^2}\cdot x^2 + 2\cdot \fra
 
 	%--------------------------------------------------------------------------------%
 
-	% Оси, сетка
+	% РћСЃРё, СЃРµС‚РєР°
 	\draw[->] (0,0) -- (\endx,0) node[right] {$x$};
 	\draw[->] (0,0) -- (0,\endy) node[above] {$y$};
 	\draw[->] (0,0) -- (-1.5,-2.25) node[above] {$z$};
 
-	% Сам график
+	% РЎР°Рј РіСЂР°С„РёРє
 	\draw[color=blue,domain=0.1:3.9] plot (\normaltwo);
 	\EllipseH{my1}{0.1}{0.5};
 	\EllipseH{my1}{0.6}{0.5};
 	\EllipseH{my1}{0.7}{0.5};
 
-	% Линии обозначающие размер
+	% Р›РёРЅРёРё РѕР±РѕР·РЅР°С‡Р°СЋС‰РёРµ СЂР°Р·РјРµСЂ
 	\draw (2,{my1(2)}) -- (5,{my1(2)});
 	\draw (2,{my1(3.9)}) -- (5,{my1(3.9)});
 	\draw[<->] (4.7,{my1(2)-0.02}) -- (4.7,{my1(3.9)+0.02}) node[right, pos=0.5] {$\scriptstyle H$};
@@ -430,7 +443,7 @@ $$ V = \pi \int\limits_0^H \left( \frac{(R_2-R_1)^2}{H^2}\cdot x^2 + 2\cdot \fra
 
 	\draw[<->] (3.9,{my1(2+2-0.6)-0.02}) -- (3.9,{my1(2+2-0.1)+0.02}) node[right, pos=0.5] {$\scriptstyle h$};
 
-	% Подпись объема
+	% РџРѕРґРїРёСЃСЊ РѕР±СЉРµРјР°
 	\draw (2,{my1(0.65)}) node {$\scriptstyle \Delta V$};
 \end{tikzpicture}
 \end{center}
@@ -444,59 +457,6 @@ $$ \lim_{\Delta h \to 0} \frac{V(h + \Delta h) - V(h)}{\Delta h} = \lim_{\Delta 
 $$ V'(h) = S(h) $$
 
 $$ \boxed{V = \int\limits_0^S S(h)\, dh} $$
-
-\subsubsection{Объем призмы:}
-
-%$$ V_{\text{призмы}} = \int\limits_0^{H} S_{\text{основания}}\, dh = \left. S_{\text{основания}}\chot h \left|_0^H = H\cdot S_{\text{основания}}}$$
-
-\begin{center}
-\noindent
-\begin{tikzpicture}
-	% Создание собственной функции
-	\tikzset{declare function={	my1(\x) = -((\x-2)^2) + 2.3;
-					my2(\x) = -my1(\x);}}
-
-	% Присвоение значения размера графика
-	\def\strtx{-0.2}
-	\def\strty{-2.6}
-
-	\def\endx{5.5}
-	\def\endy{2.6}
-
-	% Функция графика
-	\def\normaltwo{\x,{my1(\x)}}
-	\def\normalthree{\x,{my2(\x)}}
-
-	% Описание положения и рассчет координат для горизонтали
-	\def\b{(\endx - \strtx)*0.8 + \strtx}
-	\def\fb{my1(\b)}
-	\def\a{(\endx - \strtx)*0.25 + \strtx}
-	\def\fa{my1(\a)}
-
-	\def\xe{(\endx - \strtx)*0.55 + \strtx}
-	\def\fxe{my1(\xe)}
-	\def\xs{(\endx - \strtx)*0.5 + \strtx}
-	\def\fxs{my1(\xs)}
-
-	%--------------------------------------------------------------------------------%
-
-	% Оси
-	\draw[->] (0,0) -- (\endx,0) node[right] {$x$};
-	\draw[->] (0,0) -- (0,\endy) node[above] {$y$};
-	\draw[->] (0,0) -- (-1.5,-2.25) node[above] {$z$};
-
-	% Линии нижнего треугольника
-	\draw (1.25, -1.25) -- (2.3, -0.5);
-	\draw (2.3, -0.5) -- (1.7, -2);
-	
-	% Линии верхнего треугольника
-	
-	% Линии соединяющие два этих треугольника
-
-	% Обозначение площади
-	\draw (2,{my1(0.65)}) node {$\scriptstyle \Delta V$};
-\end{tikzpicture}
-\end{center}
 
 %--------------------------------------------------------------------------------%
 %--------------------------------------------------------------------------------%
